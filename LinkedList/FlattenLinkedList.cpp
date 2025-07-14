@@ -32,7 +32,37 @@ class Node{
 
 
 //}
+Node*convertArrToLinkedList(vector<int>&arr){
+	Node*dummyNode=new Node(-1);
+	Node*temp=dummyNode;
 
+	for(int i=0;i<arr.size();i++)
+	{
+		temp->child=new Node(arr[i]);
+		temp=temp->child;
+	}
+	return dummyNode->child;
+}
+Node*flattenLinkedList(Node*head){
+	vector<int>arr;
+	while(head!=nullptr){
+	Node*t2=head;
+	while(t2!=nullptr){
+	arr.push_back(t2->data);
+	t2=t2->child;
+	}
+	head=head->next;
+	}
+	sort(arr.begin(),arr.end());
+	return convertArrToLinkedList(arr);
+}
+void printLinkedList(Node*head){
+	while(head!=nullptr){
+		cout<<head->data<<",";
+		head=head->child;
+	}
+	cout<<endl;
+}
 void printOriginalLinkedList(Node*head,int depth){
 	while(head!=NULL){
 		cout<<head->data;
@@ -67,9 +97,10 @@ int main(){
 	head->next->next->next->child=new Node(17);
 
 	printOriginalLinkedList(head,0);
-	head->child->child!=NULL?cout<<"YES":cout<<"NO";
-//	Node*flattened=flattenLinkedList(head);
-//	printLinkedList(head);
+	// head->child->child!=NULL?cout<<"YES":cout<<"NO";
+	cout<<endl;
+	Node*flattened=flattenLinkedList(head);
+	printLinkedList(head);
 	
 	
 }
