@@ -16,5 +16,5 @@ int main(){
 		cout<<pq.top()<<",";
 		pq.pop();
 	}		cout<<endl;
-	
+	// this will reduce the time from (n+klogn) to klogn 
 }	
