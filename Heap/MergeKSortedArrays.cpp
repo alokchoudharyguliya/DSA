@@ -3,7 +3,7 @@ using namespace std;
 //
 // Value, Position of Array, Position of Value in array
 // Extract Min and Insert next item of the same array
-//
+// The min heap helps us to decide which element is to be inserted next
 //
 //
 struct Triplet{
@@ -40,7 +40,7 @@ int main(){
 		res.push_back(curr.val); // push the popped element into the result
 		int ap=curr.aPos, vp=curr.vPos; // now from the popped element's array pos and its position in array 
 						// 1. apos will help to find the array and vpos will help to find the next element
-		if(vp+1<arr[ap].size())		// tilll the vpos is lesser than size of the array itself
+		if(vp+1<arr[ap].size())		// till the next vpos is lesser than size of the array, that is if the next element is available if it is not even available then how can we even insert it!!
 		{
 			Triplet t(arr[ap][vp+1],ap,vp+1);
 			pq.push(t); // push the element into the priority queue
@@ -49,5 +49,7 @@ int main(){
 	for(auto it:res)
 		cout<<it<<",";
 	return 0;
+
+	// Time complexity - O(nklogk)
 
 }
