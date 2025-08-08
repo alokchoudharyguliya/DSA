@@ -3,7 +3,14 @@ using namespace std;
 class Solution{
 	public:
 		vector<int>shortestPath(vector<vector<int>>&edges,int V,int E,int src){
-
+			vector<int>adj[V];
+			for(auto it:adj[V])
+			{
+			adj[it[0]].push_back(it[1]);
+			adj[it[1]].push_back(it[0]);
+			}
+			int dist[N];
+			for(int i=0;i<N;i++)dist[i]=1e9;
 		}
 };
 int main(){
