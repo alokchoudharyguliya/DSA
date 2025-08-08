@@ -4,6 +4,10 @@
 using namespace std;
 class Solution{
 	public:
+		void topoSort(int node, vector<pair<int,int>>adj[]){
+
+
+		}
 		vector<int>shortestPath(int V,int E,vector<vector<int>>&edges){
 			vector<pair<int,int>>adj[V];
 			for(int i=0;i<E;i++)
