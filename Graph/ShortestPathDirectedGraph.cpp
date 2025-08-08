@@ -4,7 +4,14 @@
 using namespace std;
 class Solution{
 	public:
-		void topoSort(int node, vector<pair<int,int>>adj[]){
+		void topoSort(int node, vector<pair<int,int>>adj[],int vis[],stack<int>&st){
+			vis[node]=1;
+			for(auto it:adj[node]){
+				int v=it.first;
+				if(!vis[v])
+					topoSort(v,adj,vis,st);
+			}
+			st.push(node);
 
 
 		}
