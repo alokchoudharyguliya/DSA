@@ -17,11 +17,12 @@ using namespace std;
 
 // There can be two union approaches that is "UNION BY RANK" and "UNION BY SIZE"
 class DisjointSet{
-	vector<int>rank,parent;
+	vector<int>rank,parent,size;
 	public:
 	DisjointSet(int n);
 	int findUPar(int node);
 	void unionByRank(int u,int v);
+	void unionBySize(int u,int v);
 };
 
 void DisjointSet::unionByRank(int u,int v)
@@ -40,7 +41,7 @@ void DisjointSet::unionByRank(int u,int v)
 	}
 
 }
-void Disjoint::unionBySize(int u,int v){
+void DisjointSet::unionBySize(int u,int v){
 	int ulp_v=findUPar(v);
 	int ulp_u=findUPar(u);
 
@@ -64,6 +65,7 @@ int DisjointSet::findUPar(int node)
 }
 DisjointSet::DisjointSet(int n){
 	rank.resize(n+1,0);
+	size.resize(n+1,0);
 	parent.resize(n+1);
 	for(int i=0;i<=n;i++)
 	{
