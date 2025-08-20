@@ -1,5 +1,15 @@
 #include<bits/stdc++.h>
 using namespace std;
+void merge(vector<int>&arr,int start,int mid,int end){
+    int l=start;
+    while(l<mid&&r<end){
+        if()
+    }
+    while(r<){
+
+    }
+
+}
 vector<int>mergeSort(vector<int>&arr,int start,int end){
     if(start>=end){
         return arr;
