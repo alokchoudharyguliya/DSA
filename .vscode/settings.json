@@ -1,0 +1,14 @@
+{
+    "files.associations": {
+        "*.embeddedhtml": "html",
+        "deque": "cpp",
+        "list": "cpp",
+        "queue": "cpp",
+        "vector": "cpp",
+        "xlocinfo": "cpp",
+        "xstring": "cpp",
+        "xutility": "cpp",
+        "initializer_list": "cpp",
+        "type_traits": "cpp"
+    }
+}
