@@ -1,3 +1,27 @@
+<<<<<<< HEAD
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+	vector<int>arr={2,3,4,7,9};
+	int diff=0;
+	int k=4;
+	int low=0;
+	int high=arr.size()-1;
+	while(low<=high)
+	{	
+		int mid=(low+high)/2;
+		diff=arr[mid]-mid-1;
+		if(diff<k){
+			low=mid+1;
+		}else
+			high=mid-1;
+	}
+
+	cout<<k+high+1;
+
+
+}
+=======
 // arr[]={2,3,4,7,11} k=5
 // 1,5,6,8,9,10 missing 
 // 5th number is 9
@@ -29,3 +53,4 @@ int main(){
 // because we are looking for the number it is not present in the array
 // What about binary search on answers
 //
+>>>>>>> 927909678b4f424954c1b4f4d7cd8d11081b3eae
