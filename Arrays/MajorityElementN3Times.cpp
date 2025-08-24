@@ -4,7 +4,7 @@
  *
  *
  */
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 /*
 vector<int>majorityElement(vector<int>v){
@@ -48,14 +48,43 @@ vector<int>majorityElement(vector<int>v){
 */
 
 // Extended Boyer Moore's Voting Algorithm
+// cnt1 & cnt2 -> Tracking the counts of elements
+//  el1 & el2 -> for storing the majority of elements
 
-int main(){
-	vector<int>arr={11,33,33,11,33,1};
-	vector<int>ans=majorityElement(arr);
-	cout<<"Majority Element are: ";
-	for(auto it:ans)
-		cout<<it<<",";
-	cout<<endl;
+vector<int> majorityElement(vector<int> &arr)
+{
+	int ele1 = INT_MIN, ele2 = INT_MIN, cnt1 = 0, cnt2 = 0;
+	for (int i = 0; i < arr.size(); i++)
+	{
+		if (cnt1 == 0 && arr[i] != ele2)
+		{
+			cnt1 = 1;
+			ele1 = arr[i];
+		}
+		else if (cnt2 == 0 && arr[i] != ele1)
+		{
+			cnt2 = 1;
+			ele2 = arr[i];
+		}
+		else if (arr[i] == ele1)
+			cnt1++;
+		else if (arr[i] == ele2)
+			cnt2++;
+		else
+		{
+			cnt1--, cnt2--;
+		}
+	}
+	return vector<int>{ele1, ele2};
+}
+
+int main()
+{
+	vector<int> arr = {11, 33, 3, 11, 33, 1};
+	vector<int> ans = majorityElement(arr);
+	cout << "Majority Element are: ";
+	for (auto it : ans)
+		cout << it << ",";
+	cout << endl;
 	return 0;
-
 }
