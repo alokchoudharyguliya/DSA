@@ -64,7 +64,8 @@ Node* kReverse(Node*head,int k)
 		}	
 		Node*nextNode=kthNode->next;
 		kthNode->next=NULL;
-		
+		1 2 3 4 5 6
+		321 654
 
 	}
 }

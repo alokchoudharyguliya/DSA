@@ -1,4 +1,4 @@
-// Copy into a unorderd_map
+// Copy into a unordered_map
 #include <bits/stdc++.h>
 using namespace std;
 class Node
