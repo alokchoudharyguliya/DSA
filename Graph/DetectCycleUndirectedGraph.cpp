@@ -1,14 +1,16 @@
+// we take 1 indexed method
+
 #include <bits/stdc++.h>
 using namespace std;
 // #define detectCycleinUndirectedGraph dfs;
 void addEdge(vector<int> adjList[], int u, int v)
 {
-    adjList[u-1].push_back(v);
-    adjList[v-1].push_back(u);
+    adjList[u].push_back(v);
+    adjList[v].push_back(u);
 }
 void printAdjRepresentation(vector<int> adjList[], int n)
 {
-    for (int i = 0; i < n; i++)
+    for (int i = 1; i <= n; i++)
     {
         for (auto it : adjList[i])
             cout << it << ",";
@@ -24,11 +26,11 @@ bool detectCycleinUndirectedGraph(vector<int> adjList[], int n, vector<int> &vis
         if (!vis[it])
         {
             if(detectCycleinUndirectedGraph(adjList, n, vis, it, src))return true;
-            if (it != parent)
-            {
-                // cout << "Cycle";
-                return true;
-            }
+        }
+        else if (it != parent)
+        {
+            // cout << "Cycle";
+            return true;
         }
     }
     return false;
@@ -47,13 +49,14 @@ int main()
     addEdge(adjList, 1, 3);
 
     
-    vector<int> vis(n, 0);
+    vector<int> vis(n+1, 0);
     printAdjRepresentation(adjList, n);
-    for (int i = 0; i < n; i++)
+    for (int i = 1; i <= n; i++)
     {
         if (!vis[i])
         {
-            if(detectCycleinUndirectedGraph(adjList, n, vis, i, -1))cout<<"Cycle";
+            if(detectCycleinUndirectedGraph(adjList, n, vis, i, -1)){cout<<"Cycle";return 0;}
         }
     }
+    cout<<"Not Cycle";
 }
