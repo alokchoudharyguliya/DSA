@@ -20,7 +20,7 @@ public:
         else
             return parent[node] = findUPar(parent[node]); // this compresses the disjoint set data structure
     }
-    int unionByRank(int u, int v)
+    void unionByRank(int u, int v)
     {
         int u_par = findUPar(u);
         int v_par = findUPar(v);
@@ -37,4 +37,15 @@ public:
 };
 int main()
 {
+    Disjoint ds(7);
+    ds.unionByRank(1,2);
+    ds.unionByRank(2,3);
+    ds.unionByRank(4,5);
+    ds.unionByRank(6,7);
+    ds.unionByRank(5,6);
+    if(ds.findUPar(3)==ds.findUPar(7))cout<<"Same\n";
+    else cout<<"Not same\n";
+    ds.unionByRank(3,7);
+    if(ds.findUPar(3)==ds.findUPar(7))cout<<"Same\n";
+    else cout<<"Not same\n";
 }
