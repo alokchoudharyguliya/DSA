@@ -6,7 +6,6 @@ C#, OCaml, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS
 Code, Compile, Run and Debug online from anywhere in world.
 
 *******************************************************************************/
-#include <iostream>
 #include<bits/stdc++.h>
 using namespace std;
 void swap(int& a, int& b)
