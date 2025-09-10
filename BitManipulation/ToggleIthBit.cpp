@@ -18,11 +18,9 @@ int main()
     cin >> t;
     while (t--)
     {
-        int n=13,i=2;
-        // if((n>>i)%2==1)cout<<"YES";
-        if(n>>i&1)cout<<"YES";
-        // if(1<<i&n)cout<<"YES";
-        else cout<<"NO";
+        int n=13,i=1;
+        int res=n|(1<<i);
+        cout<<res;
     }
 return 0;
 }
