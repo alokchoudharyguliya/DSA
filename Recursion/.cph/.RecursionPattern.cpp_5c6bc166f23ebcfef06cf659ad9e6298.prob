@@ -1,0 +1,1 @@
+{"name":"Local: RecursionPattern","url":"c:\\Users\\alok4\\Desktop\\DSA\\Recursion\\RecursionPattern.cpp","tests":[{"id":1757525953278,"input":"5\n1 2 3 4 5","output":"1 1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\alok4\\Desktop\\DSA\\Recursion\\RecursionPattern.cpp","group":"local","local":true}
