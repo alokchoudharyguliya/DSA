@@ -18,8 +18,8 @@ int main()
     cin >> t;
     while (t--)
     {
-        int n=13,i=1;
-        int res=n|(1<<i);
+        int n=13,i=2;
+        int res=n^(1<<i);
         cout<<res;
     }
 return 0;
