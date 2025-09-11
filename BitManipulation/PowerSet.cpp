@@ -26,7 +26,7 @@ int main()
     // {
 
     // }
-    int n=3;
+    int n = 3;
     vector<int> nums = {1, 2, 3};
     vector<vector<int>> ans;
     int subsets = 1 << n;
@@ -35,13 +35,12 @@ int main()
         vector<int> lists;
         for (int i = 0; i <= n - 1; i++)
         {
-            if (num & (1 << i))
-                lists.push_back(nums[i]);
+            (num & (1 << i)) ? (void)(lists.push_back(nums[i])) : (void)0;
         }
         ans.push_back(lists);
     }
-    for(auto it:ans)
-    pV(it);
+    for (auto it : ans)
+        pV(it);
     return 0;
 }
 
