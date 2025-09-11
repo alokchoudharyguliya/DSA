@@ -16,9 +16,9 @@ int main()
     fio;
     int t;
     cin >> t;
-    while (t--)
-    {
-        
-    }
+    int ans=(t)&(t-1);
+    // cout<<ans; 
+    !(ans)?cout<<"Yes":cout<<"No";
+    
 return 0;
 }
