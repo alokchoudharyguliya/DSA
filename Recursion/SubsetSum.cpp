@@ -17,10 +17,12 @@ void helper(vector<int>&arr,int ind,vector<int>&temp,int sum){
         return;
     }
     helper(arr,ind+1,temp,sum+arr[ind]);
+    while(ind+1<arr.size()&&arr[ind]==arr[ind+1])ind++;
     helper(arr,ind+1,temp,sum);
 }
 vector<int>fun(vector<int>arr){
     vector<int>temp;
+    sort(arr.begin(),arr.end());
     helper(arr,0,temp,0);
     return temp;
 }
@@ -33,7 +35,7 @@ int main()
     // {
         
     // }
-    vector<int>arr={3,1,2};
+    vector<int>arr={3,1,2,3};
     vector<int>res=fun(arr);
     for(auto it:res)cout<<it<<" ";
 return 0;
