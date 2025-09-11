@@ -4,7 +4,6 @@
 // Now if the sum<target, we need bigger numbers and so we increment the left pointer.
 // But if sum>target, we ned to consider lesser numbers and so we will decrement the right pointer.
 //
-//
 #include<bits/stdc++.h>
 using namespace std;
 /*
@@ -38,7 +37,7 @@ vector<int>twoSumTwoPointer(vector<int>&arr,int target){
 }
 int main(){
 	vector<int>arr={4,1,2,3,1};
-//	string ans=twoSumTwoPointer(arr,5);
+//	string ans=twoSumTwoPointer(arr,5); // just check if two sum exists or not
 	vector<int>ans=twoSumTwoPointer(arr,5);
 
 //	cout<<ans<<endl;

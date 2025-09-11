@@ -44,7 +44,7 @@ int main(){
 	int n=5;
 	vector<int>arr={2,6,5,8,11};
 	int target=14;
-	string ans=twoSum(n,arr,target);
+	vector<int,int> ans=twoSum(n,arr,target);
 	cout<<ans<<endl;
 	return 0;
 }
