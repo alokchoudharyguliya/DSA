@@ -20,7 +20,7 @@ int main()
     for (int i = 1; i < arr.size(); i++)
         a = a ^ (i + 1);
     // 100 is the differentiating bit that is the third bit is the differentiating bit
-    // take the bitwise &
+    // check if the third bit is set or not
     vector<int> ev;
     vector<int> od;
     int size = arr.size();
@@ -29,13 +29,7 @@ int main()
     for (int i = 0; i < arr.size(); i++)
     {
         int b = (arr[i] & 1<<a);
-        // if (arr[i] == 5)
-        // {
-        //     cout << b;
-        //     cout << a;
-        // }
         int ref=1<<a;
-        // cout<<b<<","<<ref;
         if (b == ref)
             ev.push_back(arr[i]);
         else
@@ -48,13 +42,6 @@ int main()
     int ansB =0;
     for (auto i : od)
         ansB = ansB ^ i;
-
-    // cout << "\n";
-    // for (auto i : od)
-    //     cout << i;
-    // cout << "\n";
-    // for (auto i : ev)
-    //     cout << i;
     cout << ansA << "," << ansB;
     return 0;
 }
