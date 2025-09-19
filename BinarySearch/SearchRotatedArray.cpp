@@ -25,9 +25,6 @@ int main(){
 		else
 			high=mid-1;
 	}
-
-
 	}
 	cout<<arr[mid];
-
 }

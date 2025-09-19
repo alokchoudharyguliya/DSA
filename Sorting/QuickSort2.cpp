@@ -7,7 +7,7 @@ int partition(vector<int> arr, int low, int high)
     {
         while (arr[i] <= pivot && i <= high - 1)
             i++;
-        while (arr[i] > pivot && i >= low + 1)
+        while (arr[j] > pivot && i >= low + 1)
             j--;
         if (i < j)
             swap(arr[i], arr[j]);
@@ -38,11 +38,13 @@ int partition(vector<int> arr, int low, int high)
     {
         while (arr[i] <= pivot && i <= high - 1)
             i++;
-        while (arr[i] > pivot && i >= low + 1)
+        while (arr[j] > pivot && i >= low + 1)
             j++;
         if (i < j)
             swap(arr[i], arr[j]);
     }
+    swap(arr[low],  arr[j]);
+    return j;
 }
 void qS(vector<int> arr, int low, int high)
 {

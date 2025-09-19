@@ -5,7 +5,7 @@ using namespace std;
 	int low=0;
 	int high=arr.size()-1;
 	
-	int mid=(low+high)/2;
+	int mid=(low+high)>>1;
 	int k=5;
 	int ans=0;
 	while(low<=high){

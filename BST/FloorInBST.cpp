@@ -21,10 +21,8 @@ int floorBST(Node*root,int key){
 		else if(root->data<key){
 			floor=root->data;
 			root=root->right;
-
 		}
 	}
-	
 	return floor;
 }
 
