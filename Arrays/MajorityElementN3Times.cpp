@@ -29,6 +29,7 @@ vector<int>majorityElement(vector<int>v){
 }
 */
 /*
+// using hashing, gives time complexity of N*logN
 vector<int>majorityElement(vector<int>v){
 	int n=v.size();
 	vector<int>ls;
