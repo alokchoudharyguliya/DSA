@@ -1,8 +1,8 @@
 //  ------------------"VERY IMPORTANT QUESTION TO PRACTICE"--------------------------
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 // Merge people having any intersection say in the contact book and they must be sorted after merge
-// 
+//
 // John-a@g.com, b@g.com
 // Raj-r@g.com, c@g.com
 // John-a@g.com, d@g.com
@@ -18,120 +18,102 @@ using namespace std;
 // 1. XXX Identify those who have intersection XXX
 // 2. Merge them - "Union dynamically"
 // 3. Sort them
-class DisjointSet{
-	public:
-		vector<int>parent, rank, size;
-		DisjointSet(int V);
-		int findUPar(int node);
-		void unionByRank(int u,int v);
+class DisjointSet
+{
+public:
+	vector<int> parent, rank, size;
+	DisjointSet(int V);
+	int findUPar(int node);
+	void unionByRank(int u, int v);
 };
-DisjointSet::DisjointSet(int n){
-	parent.resize(n+1);
-	rank.resize(n+1,0);	
-	for(int i=0;i<=n;i++)
-		parent[i]=i;
+DisjointSet::DisjointSet(int n)
+{
+	parent.resize(n + 1);
+	rank.resize(n + 1, 0);
+	for (int i = 0; i <= n; i++)
+		parent[i] = i;
 }
-int DisjointSet::findUPar(int node){
-	if(node==parent[node])
-	return node;
-	else return parent[node]=findUPar(parent[node]);	
+int DisjointSet::findUPar(int node)
+{
+	if (node == parent[node])
+		return node;
+	else
+		return parent[node] = findUPar(parent[node]);
 }
-void DisjointSet::unionByRank(int u,int v){	
-	int ulp_u=findUPar(u);
-	int ulp_v=findUPar(v);
+void DisjointSet::unionByRank(int u, int v)
+{
+	int ulp_u = findUPar(u);
+	int ulp_v = findUPar(v);
 
-	if(ulp_u==ulp_v)
+	if (ulp_u == ulp_v)
 		return;
-	if(rank[ulp_u]<rank[ulp_v])
+	if (rank[ulp_u] < rank[ulp_v])
 	{
-		parent[ulp_u]=ulp_v;
+		parent[ulp_u] = ulp_v;
 	}
-	else if(rank[ulp_u]>rank[ulp_v])
+	else if (rank[ulp_u] > rank[ulp_v])
 	{
-		parent[ulp_v]=ulp_u;
+		parent[ulp_v] = ulp_u;
 	}
-	else{
-		parent[ulp_v]=ulp_u;
+	else
+	{
+		parent[ulp_v] = ulp_u;
 		rank[ulp_u]++;
 	}
-	
 }
-int main(){
+int main()
+{
 	int n;
-	vector<vector<string>>edge={{"john","j1@com","j2@com","j3@com"},
-				    {"john","j4@com"},
-				    {"raj","r1@com","r2@com"},
-				    {"john","j1@com","j5@com"},
-				    {"raj","r2@com","r3@com"},
-				    {"mary","m1@com"}};
-	n=edge.size();
+	vector<vector<string>> edge = {{"john", "j1@com", "j2@com", "j3@com"},
+								   {"john", "j4@com"},
+								   {"raj", "r1@com", "r2@com"},
+								   {"john", "j1@com", "j5@com"},
+								   {"raj", "r2@com", "r3@com"},
+								   {"mary", "m1@com"}};
+	n = edge.size();
 	DisjointSet ds(edge.size());
-	unordered_map<string,int>mapMailNode;
-	for(int j=0;j<edge.size();j++)
+	unordered_map<string, int> mapMailNode;
+	for (int j = 0; j < edge.size(); j++)
 	{
-		for(int i=1;i<edge[j].size();i++)
+		for (int i = 1; i < edge[j].size(); i++)
 		{
-			if(mapMailNode.find(edge[j][i])==mapMailNode.end())
-				mapMailNode[edge[j][i]]=j;
-			else{
-				int u=mapMailNode[edge[j][i]];
-				ds.unionByRank(u,j);
+			if (mapMailNode.find(edge[j][i]) == mapMailNode.end())
+				mapMailNode[edge[j][i]] = j;
+			else
+			{
+				int u = mapMailNode[edge[j][i]];
+				ds.unionByRank(u, j);
 			}
 		}
 	}
 
-
-	vector<string>mergedMail[n];
-	unordered_map<string,int>::iterator t;
-//	for(t=mapMailNode.begin();t!=mapMailNode.end();t++)
-	for(auto t:mapMailNode)
+	vector<string> mergedMail[n];
+	unordered_map<string, int>::iterator t;
+	//	for(t=mapMailNode.begin();t!=mapMailNode.end();t++)
+	for (auto t : mapMailNode)
 	{
-		string mail=t.first;
+		string mail = t.first;
 		mergedMail[ds.findUPar(t.second)].push_back(mail);
 	}
 
-	vector<string>ans[n];
-	for(int i=0;i<n;i++)
+	vector<string> ans[n];
+	for (int i = 0; i < n; i++)
 	{
-		if(mergedMail[i].size()==0) continue;
+		if (mergedMail[i].size() == 0)
+			continue;
 		ans[i].push_back(edge[i][0]);
-		sort(mergedMail[i].begin(),mergedMail[i].end());
-		for(int j=0;j<mergedMail[i].size();j++)
+		sort(mergedMail[i].begin(), mergedMail[i].end());
+		for (int j = 0; j < mergedMail[i].size(); j++)
 		{
 			ans[i].push_back(mergedMail[i][j]);
 		}
-	}	
-	for(auto it:ans)
-		for(auto sit:it)
-			cout<<sit<<",";
-		
-	cout<<endl;
-	for(auto it:mapMailNode)
-		cout<<it.first<<it.second<<endl;
-	return 0;
 	}
+	for (auto it : ans)
+		for (auto sit : it)
+			cout << sit << ",";
 
-#include <bits/stdc++.h>
-#define fio                   \
-ios_base::sync_with_stdio(0); \
-cin.tie(0);                   \
-cout.tie(0);
-#define debug(_) cout << #_ << " is " << _ << '\n';
-using namespace std;
-using ll=long long;
-using ld=long double;
-const ll mod = 1e9 + 7;
-const ll N = 2e5 + 10;
-const ll inf = 1e9;
-const ll linf = 1e18;
-int main()
-{
-	fio;
-	int t;
-	cin >> t;
-	while (t--)
-	{
-		
-	}
-return 0;
+	cout << endl;
+	for (auto it : mapMailNode)
+		cout << it.first << it.second << endl;
+	return 0;
 }

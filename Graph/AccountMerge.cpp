@@ -1,5 +1,7 @@
 // [0] -> name , rest elements are -> emails
 // criteria for merging is if they have a common mail and not if the name of two lists is same
+#include<bits/stdc++.h>
+using namespace std;
 class DisjointSet {
 public:
     vector<int> size, parent, rank;
