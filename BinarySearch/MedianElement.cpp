@@ -1,8 +1,54 @@
 #include <bits/stdc++.h>
 using namespace std;
+int upperBound(vector<int> row, int val, int n)
+{
+    int low = 0;
+    int high = n - 1;
+    int ans = n;
+    while (low <= high)
+    {
+        int mid = (low + high) >> 1;
+
+        if (row[mid] > val)
+        {
+            ans = mid;
+            high = mid - 1;
+        }
+        else
+        {
+            low = mid + 1;
+        }
+    }
+    return ans;
+}
+int countSmallEqual(vector<vector<int>> &matrix, int m, int n, int x)
+{
+    int cnt = 0;
+    for (int i = 0; i < m; i++)
+    {
+        cnt += upperBound(matrix[i], x, n);
+    }
+    return cnt;
+}
 int median(vector<vector<int>> &mat, int m, int n)
 {
-    
+    int low = INT_MAX, high = INT_MIN;
+    for (int i = 0; i < m; i++)
+    {
+        low = min(low, mat[i][0]);
+        high = max(high, mat[i][n - 1]);
+    }
+    int req = (n * m) / 2; // number of elements required to us to be on each side of the median
+    while (low <= high)
+    {
+        int mid = (low + high) >> 1;
+        int smallEqual = countSmallEqual(mat, m, n, mid);
+        if (smallEqual <= req)
+            low = mid + 1;
+        else
+            high = mid - 1;
+    }
+    return low;
 }
 int main()
 {
