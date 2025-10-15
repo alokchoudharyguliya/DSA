@@ -19,11 +19,6 @@ using namespace std;
 int f(vector<int> &arr, int n, int k, vector<int> &dp)
 {
     dp[0] = 0; // if(n==0)return 0;
-    // int right=INT_MAX;
-    // int left=f(arr,n-1)+abs(arr[i]-arr[i-1]);
-    // if(i>1)
-    //     right=f(arr,n-2)+abs(arr[i]-arr[i-2]);
-    // if(dp[n]!=-1)return dp[n];
     for (int i = 1; i <= n; i++)
     {
         int left = 0, ans = INT_MAX;
