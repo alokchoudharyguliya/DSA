@@ -13,7 +13,16 @@ Node*right=LCA(root->right,p,q);
 if(!left)return right;
 else if(!right)return left;
 else return root;
-
+}
+Node*LCAOptim(Node*root,Node*p,Node*q){
+    if(!root)return nullptr;
+    while(root){
+        int cur=root->data;
+        if(cur<q->data&&cur<p->data)root=root->left;
+        else if(cur>q->data&&cur>q->data)root=root->right;
+        else break;
+    }
+    return root;
 }
 int main(){
 Node* root = new Node(1);
@@ -23,5 +32,5 @@ Node* root = new Node(1);
     root->right->right = new Node(5);
     root->left->right = new Node(6);
     root->right->left = new Node(7);
-	cout<<LCA(root,root->left->left,root->left->right)->data;
+	cout<<LCAOptim(root,root->left->left,root->left->right)->data;
 }
