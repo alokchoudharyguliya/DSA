@@ -8,6 +8,7 @@ class Solution:
             adj[v].append(u)
         dist=[float('inf')]*N
         dist[src]=0
+        print(adj)
         q=deque()
         q.append(src)
         while q:
