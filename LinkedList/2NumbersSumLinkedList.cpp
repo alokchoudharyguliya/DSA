@@ -1,6 +1,6 @@
 /*
  * Two numbers are represented as Linked List given the pointers in reverse order
- * 
+ *
  * 8->9->2 representing 298
  * ^
  * |
@@ -75,76 +75,84 @@ class Solution{
 }
 }
 */
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-struct Node{
+struct Node
+{
 	int data;
-	struct Node*next;
+	struct Node *next;
 };
 
-Node* TwoNumberAddLinkedList(Node*l1, Node*l2){
-	int carry=0;
-	Node*dummy=new Node;
+Node *TwoNumberAddLinkedList(Node *l1, Node *l2)
+{
+	int carry = 0;
+	Node *dummy = new Node;
 
-      
-	Node*temp=dummy;
-        while(l1!=NULL || l2!=NULL || carry){
-	       int sum=0;
-		if(l1!=NULL)
+	Node *temp = dummy;
+	while (l1 != NULL || l2 != NULL || carry)
+	{
+		int sum = 0;
+		if (l1 != NULL)
 		{
-			sum+=l1->data;
-			l1=l1->next;
+			sum += l1->data;
+			l1 = l1->next;
 		}
-		if(l2!=NULL){
-			sum+=l2->data;
-			l2=l2->next;
+		if (l2 != NULL)
+		{
+			sum += l2->data;
+			l2 = l2->next;
 		}
-		sum+=carry;
-		carry=sum/10;
+		sum += carry;
+		carry = sum / 10;
 
-		Node*ans=new Node;
-		ans->data=sum%10;
-		temp->next=ans;
-		temp=temp->next;
-       }
-		return dummy->next;
-
+		Node *ans = new Node;
+		ans->data = sum % 10;
+		temp->next = ans;
+		temp = temp->next;
+	}
+	return dummy->next;
 }
 
-void append(struct Node**head,int new_data){
-	struct Node*new_node=new Node;
-	new_node->data=new_data;
-	new_node->next=NULL;
+void append(struct Node **head, int new_data)
+{
+	struct Node *new_node = new Node;
+	new_node->data = new_data;
+	new_node->next = NULL;
 
-	if(*head==NULL)
+	if (*head == NULL)
 	{
-		*head=new_node;
+		*head = new_node;
 		return;
 	}
-	struct Node*last=*head;
+	struct Node *last = *head;
 
-	while(last->next!=NULL){
-		last=last->next;
+	while (last->next != NULL)
+	{
+		last = last->next;
 	}
-	last->next=new_node;
+	last->next = new_node;
 }
-void printList(struct Node*head){
-	while(head!=NULL){
-		cout<<head->data<<",";
-		head=head->next;
+void printList(struct Node *head)
+{
+	while (head != NULL)
+	{
+		cout << head->data << ",";
+		head = head->next;
 	}
 }
 
-int main(){
-	struct Node*head=NULL;
-	append(&head,8);
-	append(&head,9);
-	append(&head,4);
-	struct Node*head2=NULL;
-	append(&head2,2);
-	append(&head2,5);
+int main()
+{
+	struct Node *head = NULL;
+	append(&head, 8);
+	append(&head, 9);
+	append(&head, 4);
+	struct Node *head2 = NULL;
+	append(&head2, 2);
+	append(&head2, 5);
 	printList(head2);
 	printList(head);
-	 struct Node*ans=TwoNumberAddLinkedList(head,head2); printList(ans);
+	struct Node *ans = TwoNumberAddLinkedList(head, head2);
+	printList(ans);
 	return 0;
 }
