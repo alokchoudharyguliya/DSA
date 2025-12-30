@@ -26,7 +26,6 @@ class Solution:
                 # we want the sum to be lesser than or equal to so, to lower the sum, we want to increase the divisors, and so low=mid+1
             else:
                 low=mid+1
-                
         return high
 arr=[1,2,3,4,5]
 limit=8
