@@ -1,9 +1,37 @@
+# class RoseGarden:
+#     def is_possible(self,bloom_days_array,day,m,k):
+#         count=0
+#         bouquets=0
+#         for bloom in bloom_days_array:
+#             if bloom<=day:
+#                 count+=1
+#                 if count==k:
+#                     bouquets+=1
+#                     count=0
+#             else:
+#                 count=0
+#         return bouquets>=m
+#     def min_days_to_make_bouquets(self, bloom_days_array:list,m:int, k:int)->int:
+#         day=0
+#         total=len(bloom_days_array)
+#         required=m*k
+#         # check if we have enough flowers that is if the lenght of array is lesser than or equal to m*k => flowers required
+#         if total<required:
+#             return -1
+        
+#         low=min(bloom_days_array)
+#         high=max(bloom_days_array)
+#         for day in range(low,high+1):
+#             if self.is_possible(bloom_days_array,day, m, k):
+#                 return day
+#         return -1
+
 class RoseGarden:
-    def is_possible(self,bloom_days_array,day,m,k):
+    def is_possible(self,bloom_days:list[int],check_value:int,m:int, k:int)->int:
         count=0
         bouquets=0
-        for bloom in bloom_days_array:
-            if bloom<=day:
+        for bloom in bloom_days:
+            if bloom<=check_value:
                 count+=1
                 if count==k:
                     bouquets+=1
@@ -11,21 +39,23 @@ class RoseGarden:
             else:
                 count=0
         return bouquets>=m
-    def min_days_to_make_bouquets(self, bloom_days_array:list,m:int, k:int)->int:
-        day=0
+                
+    def min_days_to_make_bouquets(self,bloom_days_array:list, m:int, k:int):
         total=len(bloom_days_array)
         required=m*k
-        # check if we have enough flowers that is if the lenght of array is lesser than or equal to m*k => flowers required
         if total<required:
             return -1
-        
         low=min(bloom_days_array)
         high=max(bloom_days_array)
-        for day in range(low,high+1):
-            if self.is_possible(bloom_days_array,day, m, k):
-                return day
-        return -1
-            
+        ans=-1
+        while low<=high:
+            mid=(low+high)//2
+            if self.is_possible(bloom_days_array,mid,m,k):
+                ans=mid
+                high=mid-1                
+            else:
+                low=mid+1
+        return ans    
 
 bloom_days=[7,7,7,7,13,11,12,7]
 k=3
